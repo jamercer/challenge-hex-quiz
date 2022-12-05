@@ -1,5 +1,26 @@
 .App {
   text-align: center;
+  width: 28rem;
+  height: 28rem;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.colorDisplay {
+  margin: auto;
+  width: 100%;
+  background-color: red;
+  flex-grow: 1;
+}
+
+.colorChoices {
+  display: flex;
+}
+
+.colorChoices button {
+  flex-grow: 1;
+  margin: 1rem;
 }
 
 .App-logo {
