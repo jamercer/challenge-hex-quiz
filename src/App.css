@@ -2,6 +2,10 @@
   --global-border-radius: 0.5rem;
 }
 
+button {
+  font-weight: bold;
+}
+
 .App {
   text-align: center;
   width: 28rem;
@@ -16,8 +20,15 @@
   width: 100%;
   height: 28rem;
   flex-grow: 1;
-  border: 3px black solid;
+  border: 5px black solid;
   border-radius: var(--global-border-radius);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .colorButtons {
@@ -29,7 +40,7 @@
   width: 100%;
   height: 2rem;
   margin: 0.5rem;
-  border: 2px black solid;
+  border: 3px black solid;
   border-radius: var(--global-border-radius);
   line-height: normal;
 }
@@ -38,17 +49,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .message div {
   width: 50%;
   height: 2rem;
   margin: 0.5rem;
-  border: 2px black solid;
+  border: 3px black solid;
   border-radius: var(--global-border-radius);
   display: flex;
   justify-content: center;
   align-items: center;
+  font-style: normal;
 }
 
 .App-logo {

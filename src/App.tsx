@@ -17,13 +17,13 @@ function App() {
     return value;
   };
 
-  const contrastingColor = (hexColor: string) => {
+  const contrastingColor = (hexColor: string, invert?: boolean) => {
     const pattern:RegExp = /[\da-f]{2}/gi;
     const result = hexColor.match(pattern)?.map(v=>parseInt(v.toLowerCase(),16));
-    if (result === undefined) return '#ff00ff';
+    if (result === undefined) return '#f0f';
     const lum = (Math.max(...result) + Math.min(...result)) / 2;
-    if (lum > 127) return '#000000';
-    return '#ffffff';
+    if (lum > 127) return invert?'#fff':'#000';
+    return invert?'#000':'#fff';
   }
 
   const createNewQuiz = () => {
@@ -49,8 +49,13 @@ function App() {
     <div className="App">
       <div
         className="colorDisplay"
-        style={{ backgroundColor: displayedColor }}
-      ></div>
+        style={{ 
+          backgroundColor: displayedColor, 
+          color: contrastingColor(displayedColor),
+          textShadow: '4px 0 '+contrastingColor(displayedColor, true),
+        }}>
+          whats my #hex?
+      </div>
       <div className="colorButtons">
         {colorChoices.map((e,i)=>
           <button onClick={() => btnClick(e)} key={i}>{e}</button>
@@ -58,9 +63,13 @@ function App() {
       </div>
       <div className="message">
         {message.text}
-        <div style={{backgroundColor: message.hex, color: contrastingColor(message.hex)}}>
+        <div style={{
+          backgroundColor: message.hex,
+          color: contrastingColor(message.hex),
+          textShadow: '2px 0 '+contrastingColor(message.hex, true),
+        }}>
           {message.hex}
-          </div>
+        </div>
       </div>
     </div>
   );
