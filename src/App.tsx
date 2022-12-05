@@ -52,7 +52,7 @@ function App() {
         style={{ 
           backgroundColor: displayedColor, 
           color: contrastingColor(displayedColor),
-          textShadow: '4px 0 '+contrastingColor(displayedColor, true),
+          textShadow: '2px 2px '+contrastingColor(displayedColor, true),
         }}>
           whats my #hex?
       </div>
@@ -66,7 +66,7 @@ function App() {
         <div style={{
           backgroundColor: message.hex,
           color: contrastingColor(message.hex),
-          textShadow: '2px 0 '+contrastingColor(message.hex, true),
+          textShadow: '1px 1px '+contrastingColor(message.hex, true),
         }}>
           {message.hex}
         </div>
