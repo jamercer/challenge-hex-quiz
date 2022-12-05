@@ -18,14 +18,10 @@ function App() {
   };
 
   const contrastingColor = (hexColor: string) => {
-    const pattern:RegExp = /[0-9a-f]{2}/gi;
+    const pattern:RegExp = /[\da-f]{2}/gi;
     const result = hexColor.match(pattern)?.map(v=>parseInt(v.toLowerCase(),16));
-    console.log(result);
-    if (result === undefined) return '#ffff00';
-    const maxValue = Math.max(...result);
-    const minValue = Math.min(...result);
-    const lum = (maxValue + minValue) / 2;
-    console.log(maxValue, minValue, lum);
+    if (result === undefined) return '#ff00ff';
+    const lum = (Math.max(...result) + Math.min(...result)) / 2;
     if (lum > 127) return '#000000';
     return '#ffffff';
   }
