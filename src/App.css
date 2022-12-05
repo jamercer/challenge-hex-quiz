@@ -1,7 +1,11 @@
+:root {
+  --global-border-radius: 0.5rem;
+}
+
 .App {
   text-align: center;
   width: 28rem;
-  height: 28rem;
+  height: auto;
   margin: 5rem auto;
   display: flex;
   flex-direction: column;
@@ -10,17 +14,41 @@
 .colorDisplay {
   margin: auto;
   width: 100%;
-  background-color: red;
+  height: 28rem;
   flex-grow: 1;
+  border: 3px black solid;
+  border-radius: var(--global-border-radius);
 }
 
-.colorChoices {
+.colorButtons {
   display: flex;
+  padding: 0.5rem 3rem;
 }
 
-.colorChoices button {
-  flex-grow: 1;
-  margin: 1rem;
+.colorButtons button {
+  width: 100%;
+  height: 2rem;
+  margin: 0.5rem;
+  border: 2px black solid;
+  border-radius: var(--global-border-radius);
+  line-height: normal;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message div {
+  width: 50%;
+  height: 2rem;
+  margin: 0.5rem;
+  border: 2px black solid;
+  border-radius: var(--global-border-radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {
