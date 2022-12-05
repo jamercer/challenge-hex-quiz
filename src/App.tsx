@@ -5,31 +5,31 @@ import "./App.css";
 function App() {
   const [colorChoices, setColorChoices] = useState<string[]>([]);
   const [displayedColor, setDisplayedColor] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
+  const [message, setMessage] = useState<{text: string, hex: string}>({text:'', hex:''});
 
   useEffect(() => {
     createNewQuiz();
   }, []);
 
   const createNewColor = () => {
-    return Math.floor(Math.random() * 16777215).toString(16);
+    return '#' + Math.floor(Math.random() * 16777215).toString(16); // 256 ^ 3 base 16
   };
 
   const createNewQuiz = () => {
     // create 3 new colors
-    // choose one to display
     const colors = [createNewColor(), createNewColor(), createNewColor()];
     setColorChoices(colors);
+    // choose one to display
     setDisplayedColor(colors[Math.floor(Math.random() * 3)]);
   };
 
   const btnClick = (hex: string) => {
     if (hex === displayedColor) {
       // u win!
-      setMessage("correct!");
+      setMessage({text: "correct!", hex: displayedColor});
     } else {
       // u loose!
-      setMessage("incorrect!");
+      setMessage({text:"incorrect!", hex: displayedColor});
     }
     createNewQuiz();
   };
@@ -38,7 +38,7 @@ function App() {
     <div className="App">
       <div
         className="colorDisplay"
-        style={{ backgroundColor: "#" + displayedColor }}
+        style={{ backgroundColor: displayedColor }}
       ></div>
       <div className="colorButtons">
         {colorChoices.map((e,i)=>
