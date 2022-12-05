@@ -41,16 +41,13 @@ function App() {
         style={{ backgroundColor: "#" + displayedColor }}
       ></div>
       <div className="colorButtons">
-        <button onClick={() => btnClick(colorChoices[0])}>
-          {"#" + colorChoices[0]}
-        </button>
-        <button onClick={() => btnClick(colorChoices[1])}>
-          {"#" + colorChoices[1]}
-        </button>
-        <button onClick={() => btnClick(colorChoices[2])}>
-          {"#" + colorChoices[2]}
-        </button>
-        {message}
+        {colorChoices.map((e,i)=>
+          <button onClick={() => btnClick(e)} key={i}>{e}</button>
+        )}
+      </div>
+      <div className="message">
+        {message.text}
+        <div style={{backgroundColor: message.hex}}>{message.hex}</div>
       </div>
     </div>
   );
