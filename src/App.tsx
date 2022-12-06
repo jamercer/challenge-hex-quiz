@@ -21,8 +21,10 @@ function App() {
     const pattern:RegExp = /[\da-f]{2}/gi;
     const result = hexColor.match(pattern)?.map(v=>parseInt(v.toLowerCase(),16));
     if (result === undefined) return '#f0f';
-    const lum = (Math.max(...result) + Math.min(...result)) / 2;
-    if (lum > 127) return invert?'#fff':'#000';
+    // const lightness = (Math.max(...result) + Math.min(...result)) / 2 / 255;
+	// const intensity = result.reduce((acc,cv)=>acc+cv) / 3 / 255;
+	const luma = (result[0] * 0.299 + result[1] * 0.587 + result[2] * 0.114) / 255;
+    if (luma > 0.5) return invert?'#fff':'#000';
     return invert?'#000':'#fff';
   }
 
