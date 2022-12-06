@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import 'animate.css';
 
 function App() {
   const [colorChoices, setColorChoices] = useState<string[]>([]);
   const [displayedColor, setDisplayedColor] = useState<string>("");
   const [message, setMessage] = useState<{text: string, hex: string}>({text:'', hex:''});
+  const [messageClassName, setMessageClassName] = useState<string>('message');
 
   useEffect(() => {
     createNewQuiz();
@@ -40,15 +42,17 @@ function App() {
     if (hex === displayedColor) {
       // u win!
       setMessage({text: "correct!", hex: displayedColor});
+      setMessageClassName('message animate__animated animate__bounce')
     } else {
       // u loose!
       setMessage({text:"incorrect!", hex: displayedColor});
+      setMessageClassName('message animate__animated animate__headShake')
     }
     createNewQuiz();
   };
 
   return (
-    <div className="App">
+	<div className='App'>
       <div
         className="colorDisplay"
         style={{ 
@@ -63,7 +67,7 @@ function App() {
           <button onClick={() => btnClick(e)} key={i}>{e}</button>
         )}
       </div>
-      <div className="message">
+      <div className={messageClassName} onAnimationEnd={()=>setMessageClassName('message')}>
         {message.text}
         <div style={{
           backgroundColor: message.hex,
